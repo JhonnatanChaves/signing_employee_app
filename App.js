@@ -3,6 +3,8 @@ import { StyleSheet, Text, View } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import forge from 'node-forge';
 
+import PDFPicker from './components/PDFPicker';
+
 export default function App() {
 
   const [signature, setSignature] = useState(null);
@@ -42,8 +44,16 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-     <Text>Assinatura: {signature}  </Text>
-      <StatusBar style="auto" />
+        <View style={styles.container}>
+          <Text>Assinatura: {signature}  </Text>
+          <StatusBar style="auto" />
+        </View>
+
+        <View>
+          <PDFPicker/>
+        </View>
+
+
     </View>
   );
 }
