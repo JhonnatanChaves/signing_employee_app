@@ -2,7 +2,6 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import forge from 'node-forge';
-
 import PDFPicker from './components/PDFPicker';
 
 export default function App() {
@@ -49,7 +48,7 @@ export default function App() {
           <StatusBar style="auto" />
         </View>
 
-        <View>
+        <View style={styles.container}>
           <PDFPicker/>
         </View>
 
