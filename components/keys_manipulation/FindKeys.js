@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 import * as SecureStore from 'expo-secure-store'
 
@@ -9,13 +9,11 @@ export default function FindKeys() {
     const [privateKey, setPrivateKey] = useState(null);
     const [password, setPassword] = useState('');
 
-
-    //A senha está mockada, desenvolva um input
     async function getValueFor(password) {
         let result = await SecureStore.getItemAsync(password);
 
         if (result) {
-            const pairKeys =  JSON.parse(result);
+            const pairKeys = JSON.parse(result);
 
             setPublicKey(pairKeys.publicKey);
             setPrivateKey(pairKeys.privateKey);
@@ -41,9 +39,9 @@ export default function FindKeys() {
 
 const styles = StyleSheet.create({
     input: {
-      height: 40,
-      margin: 12,
-      borderWidth: 1,
-      padding: 10,
+        height: 40,
+        margin: 12,
+        borderWidth: 1,
+        padding: 10,
     },
-  });
+});

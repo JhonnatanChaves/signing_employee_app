@@ -1,6 +1,6 @@
 import { Text, TextInput, Button, View, StyleSheet } from 'react-native';
 import { useState } from "react";
-import generateRSAKeys from "./GenerateKeys";
+import generateRSAKeys from "../rsa/GenerateKeys";
 import * as SecureStore from 'expo-secure-store'
 
 export default function StoreKeys() {
@@ -21,7 +21,6 @@ export default function StoreKeys() {
         }
     }
 
-    //A senha está mockada, desenvolva um input
     const saveKeys = async (password) => {
 
         const keys = getKeys();
@@ -47,9 +46,9 @@ export default function StoreKeys() {
 
 const styles = StyleSheet.create({
     input: {
-      height: 40,
-      margin: 12,
-      borderWidth: 1,
-      padding: 10,
+        height: 40,
+        margin: 12,
+        borderWidth: 1,
+        padding: 10,
     },
-  });
+});

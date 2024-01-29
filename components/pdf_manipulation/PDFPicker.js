@@ -1,5 +1,5 @@
 import React from 'react';
-import { View,Button } from 'react-native';
+import { View, Button } from 'react-native';
 import * as DocumentPicker from 'expo-document-picker';
 
 
@@ -10,7 +10,7 @@ const PDFPicker = () => {
       const docRes = await DocumentPicker.getDocumentAsync({
         type: "application/pdf",
       });
-      
+
       console.log(docRes);
     } catch (error) {
       console.log("Error while selecting file: ", error);
