@@ -1,8 +1,8 @@
 import { StyleSheet, View } from 'react-native';
 import React from 'react';
-import StoreKeys from './components/keys_manipulation/StoreKeys';
-import FindKeys from './components/keys_manipulation/FindKeys';
-//import PDFPicker from './components/pdf_manipulation/PDFPicker'
+import StoreKeys from './components/keys/StoreKeys';
+import FindKeys from './components/keys/FindKeys';
+//import PDFPicker from './components/pdf/PDFPicker'
 
 export default function App() {
 
