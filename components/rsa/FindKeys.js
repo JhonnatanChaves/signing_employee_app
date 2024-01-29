@@ -1,41 +1,49 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useEffect, useState } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import * as SecureStore from 'expo-secure-store'
+
 
 export default function FindKeys() {
 
     const [publicKey, setPublicKey] = useState(null);
     const [privateKey, setPrivateKey] = useState(null);
+    const [password, setPassword] = useState('');
 
-    const getData = async () => {
-        try {
 
-            const jsonObject = await AsyncStorage.getItem("@signing-employee:keys");            
-            return  jsonObject != null ? JSON.parse(jsonObject) : null;            
+    //A senha está mockada, desenvolva um input
+    async function getValueFor(password) {
+        let result = await SecureStore.getItemAsync(password);
 
-        } catch (error) {
-            console.log("Falha no acesso aos dados:", error)
+        if (result) {
+            const pairKeys =  JSON.parse(result);
+
+            setPublicKey(pairKeys.publicKey);
+            setPrivateKey(pairKeys.privateKey);
+
+            console.log('Sua chave privada é: ', privateKey);
+            console.log('Sua chave privada é: ', publicKey);
         }
-    };
-
-    const buidData = async() => {
-        const object = await getData();
-
-        if (object != null) {
-            setPublicKey(object.publicKey);
-            setPrivateKey(object.privateKey);
+        else {
+            alert('Senha incorreta, tente novamente');
         }
     }
 
-    useEffect(() => {
-        buidData();
-    }, []);
-
     return (
         <View>
-            <Text>Chave Pública: {publicKey}</Text>
-            <Text>Chave Privada: {privateKey}</Text>
+            <TextInput style={styles.input} onChangeText={setPassword} value={password} placeholder='Digite uma senha para acessar suas chaves: '></TextInput>
+            <Text> Este é o valor do input: {password}</Text>
+
+            <Button title="Buscar chaves" onPress={() => getValueFor(password)} />
         </View>
     );
 
 }
+
+const styles = StyleSheet.create({
+    input: {
+      height: 40,
+      margin: 12,
+      borderWidth: 1,
+      padding: 10,
+    },
+  });
