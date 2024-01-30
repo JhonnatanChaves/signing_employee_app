@@ -1,28 +1,22 @@
-import React from 'react';
-import { View, Button } from 'react-native';
 import * as DocumentPicker from 'expo-document-picker';
 
 
-const PDFPicker = () => {
+const PDFPicker = async () => {
 
-  const pickSomething = async () => {
     try {
-      const docRes = await DocumentPicker.getDocumentAsync({
+      
+
+      const docResponse = await DocumentPicker.getDocumentAsync({
         type: "application/pdf",
       });
 
-      console.log(docRes);
+      return docResponse.assets[0].uri;
+
     } catch (error) {
       console.log("Error while selecting file: ", error);
+      return null;
     }
   };
 
-  return (
-    <View >
-      <Button title="Pick something" onPress={pickSomething} />
-    </View>
-  );
-
-};
 
 export default PDFPicker;

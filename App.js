@@ -1,8 +1,6 @@
 import { StyleSheet, View } from 'react-native';
 import React from 'react';
-import StoreKeys from './components/keys/StoreKeys';
-import FindKeys from './components/keys/FindKeys';
-//import PDFPicker from './components/pdf/PDFPicker'
+import PDFModify from './components/pdf/PDFModify';
 
 export default function App() {
 
@@ -10,8 +8,7 @@ export default function App() {
     <View style={styles.container}>
       <View>
 
-        <StoreKeys />
-        <FindKeys />
+        <PDFModify />
 
       </View>
 
